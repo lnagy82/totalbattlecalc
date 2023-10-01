@@ -39,14 +39,28 @@ enum FeatureName {
 @paginate(pagination)
 entity BattleUnit {
 	number Integer
-    strengthBonus Double
-    healthBonus Double
-    allStrength Double
-    allHealth Double
+}
+
+entity Bonus {
+	name BonusName
+    value Double
+    unit MeasurementUnit
+}
+
+enum BonusName {
+	STRENGTH, HEALTH, MARCH_SPEED, CARRYING_CAPACITY
+}
+
+entity Battle {
+	date Instant
 }
 
 relationship ManyToOne {
 	BattleUnit{unit} to Unit
+}
+
+relationship ManyToMany {
+	BattleUnit to Bonus
 }
 
 relationship ManyToMany {
