@@ -2,11 +2,35 @@
   "totalbattlecalcApp": {
     "FeatureName": {
       "null": "",
-      "HUMAN": "HUMAN",
-      "RANGED": "RANGED",
-      "MELEE": "MELEE",
-      "MOUNTED": "MOUNTED",
-      "GUARDSMAN": "GUARDSMAN"
+      "HUMAN": "Human",
+      "RANGED": "Ranged unit",
+      "MELEE": "Melee unit",
+      "MOUNTED": "Mounted unit",
+      "FLYING": "Flying unit",
+      "SIEGE_ENGINE": "Siege engine",
+      "GUARDSMAN": "Guardsman",
+      "ENGINEER": "Engineer corps",
+      "SCOUT": "Scout",
+      "SPECIALIST": "Specialist",
+      "BEAST": "Beast",
+      "DRAGON": "Dragon",
+      "GIANT": "Giant",
+      "ELEMENTAL": "Elemental",
+      "STRENGTH_AGAINST_MELEE": "Strength against melee units",
+      "STRENGTH_AGAINST_MOUNTED": "Strength against mounted units",
+      "STRENGTH_AGAINST_RANGED": "Strength against ranged units",
+      "STRENGTH_AGAINST_FLYING": "Strength against flying units",
+      "STRENGTH_AGAINST_FORTIFICATION": "Strength against fortifications",
+      "STRENGTH_AGAINST_SIEGE_ENGINE": "Strength against siege engines",
+      "STRENGTH_AGAINST_DRAGON": "Strength against dragons",
+      "STRENGTH_AGAINST_ELEMENTAL": "Strength against elementas",
+      "STRENGTH_AGAINST_BEAST": "Strength against beasts",
+      "STRENGTH_AGAINST_HUMAN": "Strength against humans",
+      "STRENGTH_DOUBLED_AGAINST_PLAYER": "Strength is doubled during a battle against another player",
+      "STRENGTH_AGAINST_FORTIFICATION_BY_20_TIMES": "Strength against fortifications increased by 20 times",
+      "CHANCE_TO_DEAL_DOUBLE_DAMAGE": "Chance to deal double damage",
+      "INITIATIVE_IN_SIEGE_5": "Initiative in a siege +5"
+
     }
   }
 }
