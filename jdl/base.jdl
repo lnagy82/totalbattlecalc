@@ -41,6 +41,10 @@ entity BattleUnit {
 	number Integer
 }
 
+@dto(mapstruct)
+@service(serviceClass)
+@filter
+@paginate(pagination)
 entity Bonus {
 	name BonusName
     value Double
@@ -51,6 +55,10 @@ enum BonusName {
 	STRENGTH, HEALTH, MARCH_SPEED, CARRYING_CAPACITY
 }
 
+@dto(mapstruct)
+@service(serviceClass)
+@filter
+@paginate(pagination)
 entity Battle {
 	date Instant
 }
