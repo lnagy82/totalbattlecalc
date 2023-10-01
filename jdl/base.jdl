@@ -6,18 +6,30 @@ entity Unit {
 	name String
     strength Integer
 	health Integer
-    init Integer
+    leadership Integer
+    speed Integer
+    initiative Integer
+    foodConsumption Integer
+    carryingCapacity Integer
+    revivalCostAfterAnAttackGold Integer
+    revivalCostAfterDefendingSilver Integer
 }
 
 @dto(mapstruct)
 @service(serviceClass)
 @filter
 @paginate(pagination)
-entity UnitType {
-	name UnitTypeName
+entity Feature {
+	name FeatureName
+    value Double
+    unit MeasurementUnit
 }
 
-enum UnitTypeName {
+enum MeasurementUnit {
+	NONE, PERCENT
+}
+
+enum FeatureName {
 	HUMAN, RANGED, MELEE, MOUNTED, GUARDSMAN
 }
 
@@ -38,5 +50,5 @@ relationship ManyToOne {
 }
 
 relationship ManyToMany {
-	Unit to UnitType
+	Unit to Feature
 }
