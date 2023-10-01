@@ -1,0 +1,42 @@
+@dto(mapstruct)
+@service(serviceClass)
+@filter
+@paginate(pagination)
+entity Unit {
+	name String
+    strength Integer
+	health Integer
+    init Integer
+}
+
+@dto(mapstruct)
+@service(serviceClass)
+@filter
+@paginate(pagination)
+entity UnitType {
+	name UnitTypeName
+}
+
+enum UnitTypeName {
+	HUMAN, RANGED, MELEE, MOUNTED, GUARDSMAN
+}
+
+@dto(mapstruct)
+@service(serviceClass)
+@filter
+@paginate(pagination)
+entity BattleUnit {
+	number Integer
+    strengthBonus Double
+    healthBonus Double
+    allStrength Double
+    allHealth Double
+}
+
+relationship ManyToOne {
+	BattleUnit{unit} to Unit
+}
+
+relationship ManyToMany {
+	Unit to UnitType
+}
