@@ -1,0 +1,12 @@
+{
+  "totalbattlecalcApp": {
+    "FeatureName": {
+      "null": "",
+      "HUMAN": "HUMAN",
+      "RANGED": "RANGED",
+      "MELEE": "MELEE",
+      "MOUNTED": "MOUNTED",
+      "GUARDSMAN": "GUARDSMAN"
+    }
+  }
+}

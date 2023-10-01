@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-battle-unit-heading"
+        data-cy="BattleUnitCreateUpdateHeading"
+        jhiTranslate="totalbattlecalcApp.battleUnit.home.createOrEditLabel"
+      >
+        Create or edit a Battle Unit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.battleUnit.number" for="field_number">Number</label>
+          <input type="number" class="form-control" name="number" id="field_number" data-cy="number" formControlName="number" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.battleUnit.unit" for="field_unit">Unit</label>
+          <select class="form-control" id="field_unit" data-cy="unit" name="unit" formControlName="unit">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="unitOption.id === editForm.get('unit')!.value?.id ? editForm.get('unit')!.value : unitOption"
+              *ngFor="let unitOption of unitsSharedCollection; trackBy: trackUnitById"
+            >
+              {{ unitOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="totalbattlecalcApp.battleUnit.bonus" for="field_bonuses">Bonus</label>
+          <select class="form-control" id="field_bonuses" data-cy="bonus" multiple name="bonuses" formControlName="bonuses">
+            <option
+              [ngValue]="getSelectedBonus(bonusOption, editForm.get('bonuses')!.value)"
+              *ngFor="let bonusOption of bonusesSharedCollection; trackBy: trackBonusById"
+            >
+              {{ bonusOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "name": "Bonus",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "BonusName",
+      "fieldValues": "STRENGTH,HEALTH,MARCH_SPEED,CARRYING_CAPACITY"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "MeasurementUnit",
+      "fieldValues": "NONE,PERCENT"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "battleUnit",
+      "otherEntityRelationshipName": "bonus",
+      "relationshipName": "battleUnit",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "bonus",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231001115853"
+}

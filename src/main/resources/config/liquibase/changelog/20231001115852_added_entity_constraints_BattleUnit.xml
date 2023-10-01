@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity BattleUnit.
+    -->
+    <changeSet id="20231001115852-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="unit_id"
+                                 baseTableName="battle_unit"
+                                 constraintName="fk_battle_unit__unit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="battle_unit_id"
+                                 baseTableName="rel_battle_unit__bonus"
+                                 constraintName="fk_rel_battle_unit__bonus__battle_unit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="battle_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="bonus_id"
+                                 baseTableName="rel_battle_unit__bonus"
+                                 constraintName="fk_rel_battle_unit__bonus__bonus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="bonus"/>
+    </changeSet>
+</databaseChangeLog>

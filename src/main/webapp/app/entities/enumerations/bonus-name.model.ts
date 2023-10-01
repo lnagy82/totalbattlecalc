@@ -1,0 +1,9 @@
+export enum BonusName {
+  STRENGTH = 'STRENGTH',
+
+  HEALTH = 'HEALTH',
+
+  MARCH_SPEED = 'MARCH_SPEED',
+
+  CARRYING_CAPACITY = 'CARRYING_CAPACITY',
+}

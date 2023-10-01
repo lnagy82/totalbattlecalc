@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="UnitHeading">
+    <span jhiTranslate="totalbattlecalcApp.unit.home.title">Units</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="totalbattlecalcApp.unit.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-unit"
+        [routerLink]="['/unit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="totalbattlecalcApp.unit.home.createLabel"> Create a new Unit </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="units?.length === 0">
+    <span jhiTranslate="totalbattlecalcApp.unit.home.notFound">No units found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="units && units.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name">
+            <span jhiTranslate="totalbattlecalcApp.unit.name">Name</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="strength">
+            <span jhiTranslate="totalbattlecalcApp.unit.strength">Strength</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="health">
+            <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="leadership">
+            <span jhiTranslate="totalbattlecalcApp.unit.leadership">Leadership</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="speed">
+            <span jhiTranslate="totalbattlecalcApp.unit.speed">Speed</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="initiative">
+            <span jhiTranslate="totalbattlecalcApp.unit.initiative">Initiative</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="foodConsumption">
+            <span jhiTranslate="totalbattlecalcApp.unit.foodConsumption">Food Consumption</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="carryingCapacity">
+            <span jhiTranslate="totalbattlecalcApp.unit.carryingCapacity">Carrying Capacity</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="revivalCostAfterAnAttackGold">
+            <span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterAnAttackGold">Revival Cost After An Attack Gold</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="revivalCostAfterDefendingSilver">
+            <span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterDefendingSilver">Revival Cost After Defending Silver</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let unit of units; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/unit', unit.id, 'view']">{{ unit.id }}</a>
+          </td>
+          <td>{{ unit.name }}</td>
+          <td>{{ unit.strength }}</td>
+          <td>{{ unit.health }}</td>
+          <td>{{ unit.leadership }}</td>
+          <td>{{ unit.speed }}</td>
+          <td>{{ unit.initiative }}</td>
+          <td>{{ unit.foodConsumption }}</td>
+          <td>{{ unit.carryingCapacity }}</td>
+          <td>{{ unit.revivalCostAfterAnAttackGold }}</td>
+          <td>{{ unit.revivalCostAfterDefendingSilver }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/unit', unit.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/unit', unit.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(unit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="units && units.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

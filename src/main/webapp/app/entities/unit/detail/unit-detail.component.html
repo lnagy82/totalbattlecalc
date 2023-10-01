@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="unit">
+      <h2 data-cy="unitDetailsHeading"><span jhiTranslate="totalbattlecalcApp.unit.detail.title">Unit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ unit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.name">Name</span></dt>
+        <dd>
+          <span>{{ unit.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.strength">Strength</span></dt>
+        <dd>
+          <span>{{ unit.strength }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.health">Health</span></dt>
+        <dd>
+          <span>{{ unit.health }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.leadership">Leadership</span></dt>
+        <dd>
+          <span>{{ unit.leadership }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.speed">Speed</span></dt>
+        <dd>
+          <span>{{ unit.speed }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.initiative">Initiative</span></dt>
+        <dd>
+          <span>{{ unit.initiative }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.foodConsumption">Food Consumption</span></dt>
+        <dd>
+          <span>{{ unit.foodConsumption }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.carryingCapacity">Carrying Capacity</span></dt>
+        <dd>
+          <span>{{ unit.carryingCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterAnAttackGold">Revival Cost After An Attack Gold</span></dt>
+        <dd>
+          <span>{{ unit.revivalCostAfterAnAttackGold }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterDefendingSilver">Revival Cost After Defending Silver</span></dt>
+        <dd>
+          <span>{{ unit.revivalCostAfterDefendingSilver }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.unit.feature">Feature</span></dt>
+        <dd>
+          <span *ngFor="let feature of unit.features; let last = last">
+            <a [routerLink]="['/feature', feature?.id, 'view']">{{ feature.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/unit', unit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

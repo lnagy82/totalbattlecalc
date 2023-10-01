@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="battleUnit">
+      <h2 data-cy="battleUnitDetailsHeading"><span jhiTranslate="totalbattlecalcApp.battleUnit.detail.title">Battle Unit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ battleUnit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span></dt>
+        <dd>
+          <span>{{ battleUnit.number }}</span>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.battleUnit.unit">Unit</span></dt>
+        <dd>
+          <div *ngIf="battleUnit.unit">
+            <a [routerLink]="['/unit', battleUnit.unit?.id, 'view']">{{ battleUnit.unit?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="totalbattlecalcApp.battleUnit.bonus">Bonus</span></dt>
+        <dd>
+          <span *ngFor="let bonus of battleUnit.bonuses; let last = last">
+            <a [routerLink]="['/bonus', bonus?.id, 'view']">{{ bonus.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/battle-unit', battleUnit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

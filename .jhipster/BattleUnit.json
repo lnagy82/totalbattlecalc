@@ -1,0 +1,34 @@
+{
+  "name": "BattleUnit",
+  "fields": [
+    {
+      "fieldName": "number",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "unit",
+      "otherEntityRelationshipName": "battleUnit",
+      "relationshipName": "unit"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "bonus",
+      "otherEntityRelationshipName": "battleUnit",
+      "relationshipName": "bonus",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "battle_unit",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231001115852"
+}

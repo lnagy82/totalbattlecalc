@@ -1,0 +1,38 @@
+{
+  "name": "Feature",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "FeatureName",
+      "fieldValues": "HUMAN,RANGED,MELEE,MOUNTED,GUARDSMAN"
+    },
+    {
+      "fieldName": "value",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "unit",
+      "fieldType": "MeasurementUnit",
+      "fieldValues": "NONE,PERCENT"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "unit",
+      "otherEntityRelationshipName": "feature",
+      "relationshipName": "unit",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "feature",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231001115851"
+}

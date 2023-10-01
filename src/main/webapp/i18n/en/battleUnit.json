@@ -1,0 +1,26 @@
+{
+  "totalbattlecalcApp": {
+    "battleUnit": {
+      "home": {
+        "title": "Battle Units",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Battle Unit",
+        "createOrEditLabel": "Create or edit a Battle Unit",
+        "notFound": "No Battle Units found"
+      },
+      "created": "A new Battle Unit is created with identifier {{ param }}",
+      "updated": "A Battle Unit is updated with identifier {{ param }}",
+      "deleted": "A Battle Unit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Battle Unit {{ id }}?"
+      },
+      "detail": {
+        "title": "Battle Unit"
+      },
+      "id": "ID",
+      "number": "Number",
+      "unit": "Unit",
+      "bonus": "Bonus"
+    }
+  }
+}

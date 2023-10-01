@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+    <!--
+        Added the constraints for entity Unit.
+    -->
+    <changeSet id="20231001115850-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="unit_id"
+                                 baseTableName="rel_unit__feature"
+                                 constraintName="fk_rel_unit__feature__unit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="feature_id"
+                                 baseTableName="rel_unit__feature"
+                                 constraintName="fk_rel_unit__feature__feature_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="feature"/>
+    </changeSet>
+</databaseChangeLog>

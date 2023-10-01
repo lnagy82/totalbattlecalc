@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Unit.
+    -->
+    <changeSet id="20231001115850-1" author="jhipster">
+        <createTable tableName="unit">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="strength" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="health" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="leadership" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="speed" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="initiative" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="food_consumption" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="carrying_capacity" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="revival_cost_after_an_attack_gold" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="revival_cost_after_defending_silver" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20231001115850-1-relations" author="jhipster">
+
+        <createTable tableName="rel_unit__feature">
+            <column name="feature_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unit_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="unit_id, feature_id" tableName="rel_unit__feature"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20231001115850-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/unit.csv"
+                  separator=";"
+                  tableName="unit"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="name" type="string"/>
+            <column name="strength" type="numeric"/>
+            <column name="health" type="numeric"/>
+            <column name="leadership" type="numeric"/>
+            <column name="speed" type="numeric"/>
+            <column name="initiative" type="numeric"/>
+            <column name="food_consumption" type="numeric"/>
+            <column name="carrying_capacity" type="numeric"/>
+            <column name="revival_cost_after_an_attack_gold" type="numeric"/>
+            <column name="revival_cost_after_defending_silver" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

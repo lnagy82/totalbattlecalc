@@ -48,6 +48,15 @@ public class CacheConfiguration {
             createCache(cm, hu.totalbattlecalc.domain.User.class.getName());
             createCache(cm, hu.totalbattlecalc.domain.Authority.class.getName());
             createCache(cm, hu.totalbattlecalc.domain.User.class.getName() + ".authorities");
+            createCache(cm, hu.totalbattlecalc.domain.Unit.class.getName());
+            createCache(cm, hu.totalbattlecalc.domain.Unit.class.getName() + ".features");
+            createCache(cm, hu.totalbattlecalc.domain.Feature.class.getName());
+            createCache(cm, hu.totalbattlecalc.domain.Feature.class.getName() + ".units");
+            createCache(cm, hu.totalbattlecalc.domain.BattleUnit.class.getName());
+            createCache(cm, hu.totalbattlecalc.domain.BattleUnit.class.getName() + ".bonuses");
+            createCache(cm, hu.totalbattlecalc.domain.Bonus.class.getName());
+            createCache(cm, hu.totalbattlecalc.domain.Bonus.class.getName() + ".battleUnits");
+            createCache(cm, hu.totalbattlecalc.domain.Battle.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

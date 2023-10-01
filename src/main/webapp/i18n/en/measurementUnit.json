@@ -1,0 +1,9 @@
+{
+  "totalbattlecalcApp": {
+    "MeasurementUnit": {
+      "null": "",
+      "NONE": "NONE",
+      "PERCENT": "PERCENT"
+    }
+  }
+}

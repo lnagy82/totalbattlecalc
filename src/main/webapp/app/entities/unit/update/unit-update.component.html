@@ -1,0 +1,152 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-unit-heading" data-cy="UnitCreateUpdateHeading" jhiTranslate="totalbattlecalcApp.unit.home.createOrEditLabel">
+        Create or edit a Unit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.strength" for="field_strength">Strength</label>
+          <input type="number" class="form-control" name="strength" id="field_strength" data-cy="strength" formControlName="strength" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.health" for="field_health">Health</label>
+          <input type="number" class="form-control" name="health" id="field_health" data-cy="health" formControlName="health" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.leadership" for="field_leadership">Leadership</label>
+          <input
+            type="number"
+            class="form-control"
+            name="leadership"
+            id="field_leadership"
+            data-cy="leadership"
+            formControlName="leadership"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.speed" for="field_speed">Speed</label>
+          <input type="number" class="form-control" name="speed" id="field_speed" data-cy="speed" formControlName="speed" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.initiative" for="field_initiative">Initiative</label>
+          <input
+            type="number"
+            class="form-control"
+            name="initiative"
+            id="field_initiative"
+            data-cy="initiative"
+            formControlName="initiative"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.foodConsumption" for="field_foodConsumption"
+            >Food Consumption</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="foodConsumption"
+            id="field_foodConsumption"
+            data-cy="foodConsumption"
+            formControlName="foodConsumption"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.carryingCapacity" for="field_carryingCapacity"
+            >Carrying Capacity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="carryingCapacity"
+            id="field_carryingCapacity"
+            data-cy="carryingCapacity"
+            formControlName="carryingCapacity"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterAnAttackGold"
+            for="field_revivalCostAfterAnAttackGold"
+            >Revival Cost After An Attack Gold</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="revivalCostAfterAnAttackGold"
+            id="field_revivalCostAfterAnAttackGold"
+            data-cy="revivalCostAfterAnAttackGold"
+            formControlName="revivalCostAfterAnAttackGold"
+          />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterDefendingSilver"
+            for="field_revivalCostAfterDefendingSilver"
+            >Revival Cost After Defending Silver</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="revivalCostAfterDefendingSilver"
+            id="field_revivalCostAfterDefendingSilver"
+            data-cy="revivalCostAfterDefendingSilver"
+            formControlName="revivalCostAfterDefendingSilver"
+          />
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="totalbattlecalcApp.unit.feature" for="field_features">Feature</label>
+          <select class="form-control" id="field_features" data-cy="feature" multiple name="features" formControlName="features">
+            <option
+              [ngValue]="getSelectedFeature(featureOption, editForm.get('features')!.value)"
+              *ngFor="let featureOption of featuresSharedCollection; trackBy: trackFeatureById"
+            >
+              {{ featureOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

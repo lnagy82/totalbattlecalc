@@ -1,0 +1,64 @@
+{
+  "name": "Unit",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "strength",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "health",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "leadership",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "speed",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "initiative",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "foodConsumption",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carryingCapacity",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "revivalCostAfterAnAttackGold",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "revivalCostAfterDefendingSilver",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "feature",
+      "otherEntityRelationshipName": "unit",
+      "relationshipName": "feature",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "unit",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20231001115850"
+}

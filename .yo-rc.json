@@ -42,6 +42,8 @@
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "languages": ["en"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": ["Unit", "Feature", "BattleUnit", "Bonus", "Battle"],
+    "lastLiquibaseTimestamp": 1696161534000
   }
 }

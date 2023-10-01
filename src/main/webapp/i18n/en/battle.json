@@ -1,0 +1,24 @@
+{
+  "totalbattlecalcApp": {
+    "battle": {
+      "home": {
+        "title": "Battles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Battle",
+        "createOrEditLabel": "Create or edit a Battle",
+        "notFound": "No Battles found"
+      },
+      "created": "A new Battle is created with identifier {{ param }}",
+      "updated": "A Battle is updated with identifier {{ param }}",
+      "deleted": "A Battle is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Battle {{ id }}?"
+      },
+      "detail": {
+        "title": "Battle"
+      },
+      "id": "ID",
+      "date": "Date"
+    }
+  }
+}
