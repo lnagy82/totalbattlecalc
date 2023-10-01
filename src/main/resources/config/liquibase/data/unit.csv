@@ -1,0 +1,22 @@
+id;name;strength;health;leadership;speed;initiative;food_consumption;carrying_capacity;revival_cost_after_an_attack_gold;revival_cost_after_defending_silver
+1;Archer I;50;150;1;61;10;5;100;4;40
+2;Spearman I;50;150;1;61;10;5;250;4;40
+3;Rider I;100;300;2;73;10;10;200;8;80
+4;Archer II;90;270;1;55;10;5;100;4;40
+5;Spearman II;90;270;1;55;10;5;250;4;40
+6;Rider II;180;540;2;66;10;10;200;8;80
+7;Archer III;160;480;1;49;10;5;100;4;40
+8;Spearman III;160;480;1;49;10;5;250;4;40
+9;Rider III;320;960;2;59;10;10;200;8;80
+10;Archer IV;290;870;1;44;10;5;100;4;40
+11;Spearman IV;290;870;1;44;10;5;250;4;40
+12;Rider IV;580;1740;2;53;10;10;200;8;80
+13;Archer V;520;1560;1;40;10;5;100;4;40
+14;Spearman V;520;1560;1;40;10;5;250;4;40
+15;Rider V;1050;3150;2;48;10;10;200;8;80
+16;Heavy arbalester VI;940;2820;1;36;10;5;100;4;40
+17;Heavy halberdier VI;940;2820;1;36;10;5;250;4;40
+18;Mounted knight VI;1900;5700;2;43;10;10;200;8;80
+19;Heavy arbalester VII;1700;5100;1;32;10;5;100;4;40
+20;Heavy halberdier VII;1700;5100;1;32;10;5;250;4;40
+21;Mounted knight VII;3400;10200;2;39;10;10;200;8;80
