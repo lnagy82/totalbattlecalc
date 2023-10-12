@@ -1,0 +1,153 @@
+{
+  "configVersion": 1,
+  "timestamp": 1697116286452,
+  "index": "/totalbattlecalc/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/totalbattlecalc/125.a26d0a612b340eac3bee.js",
+        "/totalbattlecalc/163.467fea5de8bd9c608b8d.js",
+        "/totalbattlecalc/31.9311d9dc0a91960d4d83.js",
+        "/totalbattlecalc/342.7bd827f5bbe6c50fdfb7.js",
+        "/totalbattlecalc/39.b6837d800dd32e302e7a.js",
+        "/totalbattlecalc/560.ba735bd6cd98e54752a2.js",
+        "/totalbattlecalc/61.48c93de12114637e4018.js",
+        "/totalbattlecalc/718.328e3dd8b046cfbf8be3.js",
+        "/totalbattlecalc/744.b05a25e7d96cd9dc83fc.js",
+        "/totalbattlecalc/774.734f4dde2b09f1c79b6f.js",
+        "/totalbattlecalc/778.a12155fc820e08de8579.js",
+        "/totalbattlecalc/818.81721ba07a13ab313e96.js",
+        "/totalbattlecalc/848.d887d5398c26266fdf4d.js",
+        "/totalbattlecalc/930.078289aeab89538ee499.js",
+        "/totalbattlecalc/965.9ff5df8220828af88ef7.js",
+        "/totalbattlecalc/994.e6d943ce269045f70f7d.js",
+        "/totalbattlecalc/common.04ad1c7a2ed64fc86b2f.js",
+        "/totalbattlecalc/favicon.ico",
+        "/totalbattlecalc/index.html",
+        "/totalbattlecalc/main.f6459871e782347f4d27.js",
+        "/totalbattlecalc/manifest.webapp",
+        "/totalbattlecalc/polyfills.f17ae3f84b0a7936b11e.js",
+        "/totalbattlecalc/runtime.ec1597fe51575219fea3.js",
+        "/totalbattlecalc/styles.0aa7902d050a3bedaa44.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/totalbattlecalc/content/css/loading.css",
+        "/totalbattlecalc/content/images/jhipster_family_member_0.svg",
+        "/totalbattlecalc/content/images/jhipster_family_member_0_head-192.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_0_head-256.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_0_head-384.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_0_head-512.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_1.svg",
+        "/totalbattlecalc/content/images/jhipster_family_member_1_head-192.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_1_head-256.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_1_head-384.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_1_head-512.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_2.svg",
+        "/totalbattlecalc/content/images/jhipster_family_member_2_head-192.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_2_head-256.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_2_head-384.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_2_head-512.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_3.svg",
+        "/totalbattlecalc/content/images/jhipster_family_member_3_head-192.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_3_head-256.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_3_head-384.png",
+        "/totalbattlecalc/content/images/jhipster_family_member_3_head-512.png",
+        "/totalbattlecalc/content/images/logo-jhipster.png",
+        "/totalbattlecalc/content/scss/_bootstrap-variables.scss",
+        "/totalbattlecalc/content/scss/global.scss",
+        "/totalbattlecalc/content/scss/vendor.scss",
+        "/totalbattlecalc/jhipster_family_member_3.dd126cd23626f52c9123.svg",
+        "/totalbattlecalc/logo-jhipster.cfd81fbabebba3d187b7.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/totalbattlecalc/125.a26d0a612b340eac3bee.js": "19a2ee39ce95c0ff11ef068c32678232ac86c5ee",
+    "/totalbattlecalc/163.467fea5de8bd9c608b8d.js": "b37adbeb42c442ca3cb0ccdd588f04b746dd9396",
+    "/totalbattlecalc/31.9311d9dc0a91960d4d83.js": "d7d7fba1f71cad97b2f3541570bd0dcf1f9f1e6c",
+    "/totalbattlecalc/342.7bd827f5bbe6c50fdfb7.js": "6c3109b8c754722a60ff37e2f5a8f7e026aa108b",
+    "/totalbattlecalc/39.b6837d800dd32e302e7a.js": "6de695cc344bf5c804d76ec76f8fdf11f6c7dd2d",
+    "/totalbattlecalc/560.ba735bd6cd98e54752a2.js": "2d255eaba2b5a9fdff5db12917f6568cbeca815b",
+    "/totalbattlecalc/61.48c93de12114637e4018.js": "12d275df3f3677ab9aa0ff0c5c6d1cf53af43074",
+    "/totalbattlecalc/718.328e3dd8b046cfbf8be3.js": "695099505999c9aa255dffaf1bc2b78830ab0f61",
+    "/totalbattlecalc/744.b05a25e7d96cd9dc83fc.js": "6ca19be9e23bc5e5759349dfbd6e0ea0f3785150",
+    "/totalbattlecalc/774.734f4dde2b09f1c79b6f.js": "42397a86030eac36215f57e45513380f0d6b4801",
+    "/totalbattlecalc/778.a12155fc820e08de8579.js": "b589f5c53e0270782fa2e26c704f78d365397130",
+    "/totalbattlecalc/818.81721ba07a13ab313e96.js": "5ab20f3e7fff31fae8b13e05cf84e22d3f62d0f4",
+    "/totalbattlecalc/848.d887d5398c26266fdf4d.js": "615fb30acfde35261bb25383076a62bca1527ebd",
+    "/totalbattlecalc/930.078289aeab89538ee499.js": "7cb904a871ded1c600a793c35548f1f35e432390",
+    "/totalbattlecalc/965.9ff5df8220828af88ef7.js": "c0f6fba74addc4215e904b356418fe505f6ddec5",
+    "/totalbattlecalc/994.e6d943ce269045f70f7d.js": "5af73dc92e70c9f30b6259dfc7f72d9cd4c58d4b",
+    "/totalbattlecalc/common.04ad1c7a2ed64fc86b2f.js": "4e77df79b97372f2197094dc33bd6fa4c7ad76af",
+    "/totalbattlecalc/content/css/loading.css": "e3adf345abab8944f8e3f1847be6571e25b1c476",
+    "/totalbattlecalc/content/images/jhipster_family_member_0.svg": "d74ed3591e3a916224096cef4f87dc3bd7479386",
+    "/totalbattlecalc/content/images/jhipster_family_member_0_head-192.png": "df480d17864835a76db4abd997176e13cfa38d2c",
+    "/totalbattlecalc/content/images/jhipster_family_member_0_head-256.png": "ec1cd28328e885231c2d9a451cc46a8d4f10d6f4",
+    "/totalbattlecalc/content/images/jhipster_family_member_0_head-384.png": "55c081b847a19807b34b48e31e63a464a2726d4e",
+    "/totalbattlecalc/content/images/jhipster_family_member_0_head-512.png": "6cf7f74775338ab98de40ef589c68337fe8e859c",
+    "/totalbattlecalc/content/images/jhipster_family_member_1.svg": "61a207bca2c8b0dac21fc945d2f2505e4b5d3a30",
+    "/totalbattlecalc/content/images/jhipster_family_member_1_head-192.png": "ba95a15a915e98e756f8c0f6202cbb7146913d7a",
+    "/totalbattlecalc/content/images/jhipster_family_member_1_head-256.png": "ae556422471b55c075155b881fa3d5ee646f968a",
+    "/totalbattlecalc/content/images/jhipster_family_member_1_head-384.png": "0270ae0a742ebc7eaef16840d708a06663723204",
+    "/totalbattlecalc/content/images/jhipster_family_member_1_head-512.png": "a432afd937aae212f7a5ea3b0285bd74b7358812",
+    "/totalbattlecalc/content/images/jhipster_family_member_2.svg": "4b05e0217c9e27910087f76aa24a5699f7a3a30e",
+    "/totalbattlecalc/content/images/jhipster_family_member_2_head-192.png": "7daaed3c0c953917ad905857627dbfc6466856af",
+    "/totalbattlecalc/content/images/jhipster_family_member_2_head-256.png": "67f06e7a90ac379846940f1332d9d10398c49ae5",
+    "/totalbattlecalc/content/images/jhipster_family_member_2_head-384.png": "7a0f8b1cc27ec81ce80bc1903f6faa2dab5524d9",
+    "/totalbattlecalc/content/images/jhipster_family_member_2_head-512.png": "ee068745494bc8e72479d25287f2f80934f38c6d",
+    "/totalbattlecalc/content/images/jhipster_family_member_3.svg": "0690f4141a25d739ed9429b0b315cc94196a3644",
+    "/totalbattlecalc/content/images/jhipster_family_member_3_head-192.png": "58b5043c79afe05573cd8c3f7c23cc84c96ca362",
+    "/totalbattlecalc/content/images/jhipster_family_member_3_head-256.png": "ee0fd7e4d2c0882650575bbaca55dee69dcaa064",
+    "/totalbattlecalc/content/images/jhipster_family_member_3_head-384.png": "cf311c64f4d6762559ab3063521524f736f0975a",
+    "/totalbattlecalc/content/images/jhipster_family_member_3_head-512.png": "97e81d97579be35f112fa057028887fbb80f962c",
+    "/totalbattlecalc/content/images/logo-jhipster.png": "e1e46028ec092ca351425b07707fcdd52146b0b3",
+    "/totalbattlecalc/content/scss/_bootstrap-variables.scss": "34ef80d95b530a8717a480c0476ba9990b17b0d0",
+    "/totalbattlecalc/content/scss/global.scss": "07356d22a7bad246d523b8c6765675a4aa1f44c8",
+    "/totalbattlecalc/content/scss/vendor.scss": "4b38b0cdbb0b745b7bba9bc5e8d6390f499977f7",
+    "/totalbattlecalc/favicon.ico": "69547cd4a95b59ac7e6818b6eb82befa061d0c16",
+    "/totalbattlecalc/index.html": "da873004c3714ce6c11ca268f7f79918a5e8412d",
+    "/totalbattlecalc/jhipster_family_member_3.dd126cd23626f52c9123.svg": "0690f4141a25d739ed9429b0b315cc94196a3644",
+    "/totalbattlecalc/logo-jhipster.cfd81fbabebba3d187b7.png": "e1e46028ec092ca351425b07707fcdd52146b0b3",
+    "/totalbattlecalc/main.f6459871e782347f4d27.js": "f25eaefe0b6e05b9c3fa7b28c65a68c3ddb085cd",
+    "/totalbattlecalc/manifest.webapp": "bc5cb7fd7a72817757aead11971255b8bdc5c83b",
+    "/totalbattlecalc/polyfills.f17ae3f84b0a7936b11e.js": "6f655e43f1bab1b5d012e58f03014c6a4661fc4a",
+    "/totalbattlecalc/runtime.ec1597fe51575219fea3.js": "17374b444587cdf86cd009b44b35a6000e0b8401",
+    "/totalbattlecalc/styles.0aa7902d050a3bedaa44.css": "af974e48c9ce48283e9431a5982652742d607c45"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
