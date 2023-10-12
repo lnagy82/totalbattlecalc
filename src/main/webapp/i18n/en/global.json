@@ -12,6 +12,7 @@
         "battleUnit": "Battle Unit",
         "bonus": "Bonus",
         "battle": "Battle",
+        "troopCalculator": "Troop Calculator",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

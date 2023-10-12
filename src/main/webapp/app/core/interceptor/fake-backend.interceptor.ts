@@ -104,6 +104,6 @@ function basicDetails(user: any): any {
     lastName: 'User',
     langKey: 'en',
     email: 'email@email.com',
-    authorities: ['USER', 'ADMIN'],
+    authorities: ['ROLE_USER'],
   };
 }
