@@ -2,6 +2,8 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import * as unitData from '../../../data/unit.json';
+import { Unit } from 'app/entities/unit/unit.model';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -62,8 +64,7 @@ function deleteUser(): Observable<HttpEvent<any>> {
 }
 
 function ok(body?: any): Observable<HttpEvent<any>> {
-  return of(new HttpResponse({ status: 200, body }))
-      .pipe(delay(500)); // delay observable to simulate server api call
+  return of(new HttpResponse({ status: 200, body })).pipe(delay(500)); // delay observable to simulate server api call
 }
 
 export const fakeBackendProvider = {
@@ -73,24 +74,36 @@ export const fakeBackendProvider = {
   multi: true,
 };
 function getUnits(): Observable<HttpEvent<any>> {
-  return ok();
+  // const i = unitData.data;
+  const units: Unit[] = JSON.parse(JSON.stringify(unitData)).data;
+
+  // eslint-disable-next-line no-console
+  console.log(units);
+  return ok(units);
 }
 function getManagementInfo(): Observable<HttpEvent<any>> {
   return ok({
-    activeProfiles: ['prod']
+    activeProfiles: ['prod'],
   });
 }
 
 function getApiAccount(): Observable<HttpEvent<any>> {
   const user = {};
   return ok({
-      ...basicDetails(user),
-      token: 'fake-jwt-token'
-  })
+    ...basicDetails(user),
+    token: 'fake-jwt-token',
+  });
 }
 
 function basicDetails(user: any): any {
   const { id, login, firstName, lastName } = user;
-  return { id, login: 'user' , firstName:'Default', lastName:'User', langKey:'en', email: 'email@email.com', authorities: ['USER', 'ADMIN'] };
+  return {
+    id,
+    login: 'user',
+    firstName: 'Default',
+    lastName: 'User',
+    langKey: 'en',
+    email: 'email@email.com',
+    authorities: ['USER', 'ADMIN'],
+  };
 }
-
