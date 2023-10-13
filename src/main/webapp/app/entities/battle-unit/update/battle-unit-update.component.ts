@@ -52,6 +52,7 @@ export class BattleUnitUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const battleUnit = this.createFromForm();
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (battleUnit.id !== undefined) {
       this.subscribeToSaveResponse(this.battleUnitService.update(battleUnit));
     } else {
@@ -129,12 +130,12 @@ export class BattleUnitUpdateComponent implements OnInit {
   }
 
   protected createFromForm(): IBattleUnit {
-    return {
-      ...new BattleUnit(),
-      id: this.editForm.get(['id'])!.value,
-      number: this.editForm.get(['number'])!.value,
-      unit: this.editForm.get(['unit'])!.value,
-      bonuses: this.editForm.get(['bonuses'])!.value,
-    };
+    const battleUnit = new BattleUnit(
+      this.editForm.get(['id'])!.value,
+      this.editForm.get(['number'])!.value,
+      this.editForm.get(['unit'])!.value,
+      this.editForm.get(['bonuses'])!.value
+    );
+    return battleUnit;
   }
 }

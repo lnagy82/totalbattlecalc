@@ -8,6 +8,7 @@ export interface IUnit {
   leadership?: number | null;
   speed?: number | null;
   initiative?: number | null;
+  cost?: number | null;
   foodConsumption?: number | null;
   carryingCapacity?: number | null;
   revivalCostAfterAnAttackGold?: number | null;
@@ -24,6 +25,7 @@ export class Unit implements IUnit {
     public leadership?: number | null,
     public speed?: number | null,
     public initiative?: number | null,
+    public cost?: number | null,
     public foodConsumption?: number | null,
     public carryingCapacity?: number | null,
     public revivalCostAfterAnAttackGold?: number | null,

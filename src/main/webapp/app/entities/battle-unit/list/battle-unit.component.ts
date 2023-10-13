@@ -58,7 +58,7 @@ export class BattleUnitComponent implements OnInit {
   }
 
   trackId(index: number, item: IBattleUnit): number {
-    return item.id!;
+    return item.id;
   }
 
   delete(battleUnit: IBattleUnit): void {

@@ -9,6 +9,7 @@
   >
     Setup Bonuses
   </button>
+  <button class="btn btn-primary" type="button" (click)="calculate()">Calculator</button>
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
@@ -16,71 +17,48 @@
     trigger.
   </div>
 
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
     <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-  </div>
+  </div> -->
 
   <div class="form-group">
-    <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.name" for="field_name">Name</label>
-    <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+    <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.leadership" for="field_leadership">Maximum Leadership</label>
+    <input type="text" class="form-control" name="leadership" id="field_leadership" data-cy="leadership" [(ngModel)]="maxLeadership" />
   </div>
 </div>
 
 <div class="form-group">
   <label jhiTranslate="totalbattlecalcApp.unit.home.title" for="field_features">Unit</label>
-  <select class="form-control" id="field_features">
-    <option [ngValue]="unit.id" *ngFor="let unit of units; trackBy: trackId">
+  <select class="form-control" id="field_features" [(ngModel)]="selectedUnit" (change)="gotoBattle()">
+    <option [ngValue]="unit" *ngFor="let unit of possibleUnits; trackBy: trackId">
       {{ unit.name }}
     </option>
   </select>
 </div>
-
-<div class="table-responsive" id="entities" *ngIf="units && units.length > 0">
+<div class="form-group">
+<button class="btn btn-primary" type="button" (click)="gotoBattle()">Add</button>
+</div>
+<div class="table-responsive" id="entities" *ngIf="battleUnits && battleUnits!.length > 0">
   <table class="table table-striped" aria-describedby="page-heading">
     <thead>
       <tr>
-        <th><span jhiTranslate="global.field.id">ID</span></th>
+        <th></th>
         <th>
           <span jhiTranslate="totalbattlecalcApp.unit.name">Name</span>
         </th>
         <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.strength">Strength</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.leadership">Leadership</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.speed">Speed</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.initiative">Initiative</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.foodConsumption">Food Consumption</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.carryingCapacity">Carrying Capacity</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterAnAttackGold">Revival Cost After An Attack Gold</span>
-        </th>
-        <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.revivalCostAfterDefendingSilver">Revival Cost After Defending Silver</span>
+          <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
         </th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let unit of units; trackBy: trackId" data-cy="entityTable">
-        <td>
-          <a [routerLink]="['/unit', unit.id, 'view']">{{ unit.id }}</a>
-        </td>
-        <td>{{ unit.name }}</td>
-        <td>{{ unit.strength }}</td>
+      <tr *ngFor="let battleUnit of battleUnits!; trackBy: trackId" data-cy="entityTable">
+        <th><fa-icon icon="users"></fa-icon></th>
+        <td>{{ battleUnit.unit!.name }}</td>
+        <td>{{ battleUnit.number }}</td>
+        <!-- <td>{{ unit.strength }}</td>
         <td>{{ unit.health }}</td>
         <td>{{ unit.leadership }}</td>
         <td>{{ unit.speed }}</td>
@@ -88,12 +66,12 @@
         <td>{{ unit.foodConsumption }}</td>
         <td>{{ unit.carryingCapacity }}</td>
         <td>{{ unit.revivalCostAfterAnAttackGold }}</td>
-        <td>{{ unit.revivalCostAfterDefendingSilver }}</td>
+        <td>{{ unit.revivalCostAfterDefendingSilver }}</td> -->
         <td class="text-right">
           <div class="btn-group">
-            <button type="submit" [routerLink]="['/unit', unit.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-              <fa-icon icon="eye"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+            <button class="btn btn-danger btn-sm" data-cy="entityDetailsButton" (click)="gotoHome(battleUnit)">
+              <fa-icon icon="trash-alt"></fa-icon>
+              <span class="d-none d-md-inline" jhiTranslate="entity.action.remove">Remove</span>
             </button>
 
             <!-- <button type="submit" [routerLink]="['/unit', unit.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">

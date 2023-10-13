@@ -25,6 +25,6 @@ export class BattleUnitRoutingResolveService implements Resolve<IBattleUnit> {
         })
       );
     }
-    return of(new BattleUnit());
+    return of(new BattleUnit(0, 0, 100.0, 100.0));
   }
 }
