@@ -9,7 +9,7 @@
   >
     Setup Bonuses
   </button>
-  <button class="btn btn-primary" type="button" (click)="calculate()">Calculator</button>
+  <button class="btn btn-primary" type="button" (click)="calculate()">Calculate</button>
 </p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
@@ -50,6 +50,12 @@
         <th>
           <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
         </th>
+        <th>
+          <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
+        </th>
+        <th>
+          <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
+        </th>
         <th></th>
       </tr>
     </thead>
@@ -58,6 +64,8 @@
         <th><fa-icon icon="users"></fa-icon></th>
         <td>{{ battleUnit.unit!.name }}</td>
         <td>{{ battleUnit.number }}</td>
+        <td>{{ battleUnit.unit?.health }}</td>
+        <td>{{ getAllHealth(battleUnit) }}</td>
         <!-- <td>{{ unit.strength }}</td>
         <td>{{ unit.health }}</td>
         <td>{{ unit.leadership }}</td>

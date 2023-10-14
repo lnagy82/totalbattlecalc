@@ -54,8 +54,12 @@ export class OptimizerService {
     let strength = 0;
 
     troops.forEach(unit => {
-      strength += unit.getAllStrength();
+      strength += this.getAllStrength(unit);
     });
     return strength;
+  }
+
+  getAllStrength(unit: BattleUnit): number {
+    return unit.unit!.strength! * unit.number * ((unit.bStrength + 100.0) / 100.0);
   }
 }

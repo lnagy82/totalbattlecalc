@@ -23,8 +23,7 @@ export class TroopCalculatorComponent implements OnInit {
     protected troopCalculatorService: TroopCalculatorService,
     private localStorageService: LocalStorageService) {}
 
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method, @typescript-eslint/explicit-function-return-type
-  ngOnInit() {
+  ngOnInit(): void {
     this.unitService.query().subscribe(
       (res: HttpResponse<IUnit[]>) => {
         this.isLoading = false;
@@ -47,16 +46,13 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   gotoBattle(): void {
-    //
     if (this.selectedUnit) {
-      this.battleUnits!.push(new BattleUnit(1, 0, 100.0, 100.0, this.selectedUnit));
+      this.battleUnits!.push(new BattleUnit(1, 0, 630.8, 564.0, this.selectedUnit));
       const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
       this.possibleUnits!.splice(index, 1);
       this.selectedUnit = undefined;
 
-
-      this.localStorageService.store("possibleUnits", this.possibleUnits);
-      this.localStorageService.store("battleUnits", this.battleUnits);
+      this.saveUnits();
     }
     // eslint-disable-next-line no-console
     console.log(this.selectedUnit);
@@ -68,11 +64,26 @@ export class TroopCalculatorComponent implements OnInit {
     this.possibleUnits!.push(battleUnit.unit);
     this.sortByName(this.possibleUnits);
 
+    this.saveUnits();
+  }
+
+  calculate(): void {
+    this.battleUnits!.forEach(unit => {
+      unit.number = 0;
+    });
+    this.battleUnits = this.troopCalculatorService.getTroops(this.battleUnits!, this.maxLeadership);
+    this.saveUnits();
+  }
+
+  getAllHealth(unit: BattleUnit): number {
+    return unit.unit!.health! * unit.number * ((unit.bHealth + 100.0) / 100.0);
+  }
+
+  private saveUnits(): void {
     this.localStorageService.store("possibleUnits", this.possibleUnits);
     this.localStorageService.store("battleUnits", this.battleUnits);
   }
-
-  sortByName(units?: IUnit[]): void {
+  private sortByName(units?: IUnit[]): void {
     units!.sort(function (a, b) {
       if (a.name! < b.name!) {
         return -1;
@@ -82,14 +93,5 @@ export class TroopCalculatorComponent implements OnInit {
       }
       return 0;
     });
-  }
-
-  calculate(): void {
-    this.battleUnits!.forEach(unit => {
-      unit.number = 0;
-    });
-    const battleUnits = this.troopCalculatorService.getTroops(this.battleUnits!, this.maxLeadership);
-    // eslint-disable-next-line no-console
-    console.log(battleUnits);
   }
 }

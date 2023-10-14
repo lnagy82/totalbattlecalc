@@ -9,16 +9,11 @@ export interface IBattleUnit {
   unit?: IUnit | null;
   bonuses?: IBonus[] | null;
 
-  getAllStrength: () => number;
   getAllCost: () => number;
 }
 
 export class BattleUnit implements IBattleUnit {
   constructor(public id: number, public number: number, public bStrength: number, public bHealth: number, public unit?: IUnit | null, public bonuses?: IBonus[] | null) {}
-
-  getAllStrength(): number {
-    return this.unit!.strength! * this.number * ((this.bStrength + 100.0) / 100.0);
-  }
 
   getAllCost(): number {
     return this.unit!.cost! * this.number;
