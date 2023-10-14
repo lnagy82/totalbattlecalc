@@ -7,37 +7,31 @@
     aria-expanded="false"
     aria-controls="collapseExample"
   >
-    Setup Bonuses
+    Setup
   </button>
   <button class="btn btn-primary" type="button" (click)="calculate()">Calculate</button>
 </p>
 <div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant
-    trigger.
-  </div>
-
-  <!-- <div class="form-group">
-    <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
-    <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
-  </div> -->
-
   <div class="form-group">
     <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.leadership" for="field_leadership">Maximum Leadership</label>
     <input type="text" class="form-control" name="leadership" id="field_leadership" data-cy="leadership" [(ngModel)]="maxLeadership" />
   </div>
 </div>
-
 <div class="form-group">
   <label jhiTranslate="totalbattlecalcApp.unit.home.title" for="field_features">Unit</label>
-  <select class="form-control" id="field_features" [(ngModel)]="selectedUnit" (change)="gotoBattle()">
+  <select class="form-control" id="field_features" [(ngModel)]="selectedUnit">
     <option [ngValue]="unit" *ngFor="let unit of possibleUnits; trackBy: trackId">
       {{ unit.name }}
     </option>
   </select>
 </div>
-<div class="form-group">
-<button class="btn btn-primary" type="button" (click)="gotoBattle()">Add</button>
+<div class="btn-group">
+  <div class="form-group">
+    <button class="btn btn-primary" type="button" (click)="gotoBattle()">Add with health bonus</button>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="bHealth" />
+  </div>
 </div>
 <div class="table-responsive" id="entities" *ngIf="battleUnits && battleUnits!.length > 0">
   <table class="table table-striped" aria-describedby="page-heading">
@@ -51,7 +45,7 @@
           <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
         </th>
         <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
+          <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth">Health Bonus</span>
         </th>
         <th>
           <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
@@ -64,33 +58,14 @@
         <th><fa-icon icon="users"></fa-icon></th>
         <td>{{ battleUnit.unit!.name }}</td>
         <td>{{ battleUnit.number }}</td>
-        <td>{{ battleUnit.unit?.health }}</td>
+        <td>{{ battleUnit.bHealth }}</td>
         <td>{{ getAllHealth(battleUnit) }}</td>
-        <!-- <td>{{ unit.strength }}</td>
-        <td>{{ unit.health }}</td>
-        <td>{{ unit.leadership }}</td>
-        <td>{{ unit.speed }}</td>
-        <td>{{ unit.initiative }}</td>
-        <td>{{ unit.foodConsumption }}</td>
-        <td>{{ unit.carryingCapacity }}</td>
-        <td>{{ unit.revivalCostAfterAnAttackGold }}</td>
-        <td>{{ unit.revivalCostAfterDefendingSilver }}</td> -->
         <td class="text-right">
           <div class="btn-group">
             <button class="btn btn-danger btn-sm" data-cy="entityDetailsButton" (click)="gotoHome(battleUnit)">
               <fa-icon icon="trash-alt"></fa-icon>
               <span class="d-none d-md-inline" jhiTranslate="entity.action.remove">Remove</span>
             </button>
-
-            <!-- <button type="submit" [routerLink]="['/unit', unit.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-              <fa-icon icon="pencil-alt"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
-            </button> -->
-
-            <!-- <button type="submit" (click)="delete(unit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-              <fa-icon icon="times"></fa-icon>
-              <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
-            </button> -->
           </div>
         </td>
       </tr>

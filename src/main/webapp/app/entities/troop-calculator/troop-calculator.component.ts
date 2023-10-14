@@ -15,7 +15,8 @@ export class TroopCalculatorComponent implements OnInit {
   possibleUnits?: IUnit[];
   battleUnits?: IBattleUnit[] = [];
   isLoading = false;
-  maxLeadership = 20000;
+  maxLeadership = 28000;
+  bHealth = 0;
   selectedUnit?: IUnit;
 
   constructor
@@ -47,7 +48,7 @@ export class TroopCalculatorComponent implements OnInit {
 
   gotoBattle(): void {
     if (this.selectedUnit) {
-      this.battleUnits!.push(new BattleUnit(1, 0, 630.8, 564.0, this.selectedUnit));
+      this.battleUnits!.push(new BattleUnit(1, 0, 564.0, this.bHealth, this.selectedUnit));
       const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
       this.possibleUnits!.splice(index, 1);
       this.selectedUnit = undefined;
