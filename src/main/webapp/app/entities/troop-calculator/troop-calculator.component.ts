@@ -15,14 +15,16 @@ export class TroopCalculatorComponent implements OnInit {
   possibleUnits?: IUnit[];
   battleUnits?: IBattleUnit[] = [];
   isLoading = false;
+  leadership: number | undefined;
   maxLeadership = 28000;
   bHealth = 0;
   selectedUnit?: IUnit;
 
-  constructor
-  (protected unitService: UnitService,
+  constructor(
+    protected unitService: UnitService,
     protected troopCalculatorService: TroopCalculatorService,
-    private localStorageService: LocalStorageService) {}
+    private localStorageService: LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     this.unitService.query().subscribe(
@@ -31,9 +33,9 @@ export class TroopCalculatorComponent implements OnInit {
         this.battleUnits = this.localStorageService.retrieve('battleUnits') ?? [];
         this.possibleUnits = this.localStorageService.retrieve('possibleUnits');
 
-        if(this.possibleUnits == null || this.possibleUnits.length === 0){
-            this.possibleUnits = res.body ?? [];
-            this.sortByName(this.possibleUnits);
+        if (this.possibleUnits == null || this.possibleUnits.length === 0) {
+          this.possibleUnits = res.body ?? [];
+          this.sortByName(this.possibleUnits);
         }
       },
       () => {
@@ -72,17 +74,19 @@ export class TroopCalculatorComponent implements OnInit {
     this.battleUnits!.forEach(unit => {
       unit.number = 0;
     });
-    this.battleUnits = this.troopCalculatorService.getTroops(this.battleUnits!, this.maxLeadership);
+    const troopCalculation = this.troopCalculatorService.getTroopsCalculation(this.battleUnits!, this.maxLeadership);
+    this.battleUnits = troopCalculation.battleUnits;
+    this.leadership = troopCalculation.leadership;
     this.saveUnits();
   }
 
   getAllHealth(unit: BattleUnit): number {
-    return unit.unit!.health! * unit.number * ((unit.bHealth + 100.0) / 100.0);
+    return (unit.unit!.health! * unit.number * (unit.bHealth + 100.0)) / 100.0;
   }
 
   private saveUnits(): void {
-    this.localStorageService.store("possibleUnits", this.possibleUnits);
-    this.localStorageService.store("battleUnits", this.battleUnits);
+    this.localStorageService.store('possibleUnits', this.possibleUnits);
+    this.localStorageService.store('battleUnits', this.battleUnits);
   }
   private sortByName(units?: IUnit[]): void {
     units!.sort(function (a, b) {

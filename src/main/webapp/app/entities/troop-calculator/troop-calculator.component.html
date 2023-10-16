@@ -30,8 +30,12 @@
     <button class="btn btn-primary" type="button" (click)="gotoBattle()">Add with health bonus</button>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="bHealth" />
+    <input type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="bHealth" />
   </div>
+</div>
+<div class="form-group">
+  <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.leadership" for="field_leadership">Maximum Leadership</label>
+  <input type="text" class="form-control" name="leadership" id="field_leadership" data-cy="leadership" [(ngModel)]="this.leadership" disabled/>
 </div>
 <div class="table-responsive" id="entities" *ngIf="battleUnits && battleUnits!.length > 0">
   <table class="table table-striped" aria-describedby="page-heading">
@@ -44,9 +48,9 @@
         <th>
           <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
         </th>
-        <th>
+        <!-- <th>
           <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth">Health Bonus</span>
-        </th>
+        </th> -->
         <th>
           <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
         </th>
@@ -58,8 +62,8 @@
         <th><fa-icon icon="users"></fa-icon></th>
         <td>{{ battleUnit.unit!.name }}</td>
         <td>{{ battleUnit.number }}</td>
-        <td>{{ battleUnit.bHealth }}</td>
-        <td>{{ getAllHealth(battleUnit) }}</td>
+        <!-- <td>{{ battleUnit.bHealth }}</td> -->
+        <td>{{ getAllHealth(battleUnit) | number: '1.0-0' }}</td>
         <td class="text-right">
           <div class="btn-group">
             <button class="btn btn-danger btn-sm" data-cy="entityDetailsButton" (click)="gotoHome(battleUnit)">

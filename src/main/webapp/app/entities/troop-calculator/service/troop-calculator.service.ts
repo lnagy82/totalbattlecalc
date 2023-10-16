@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { BattleUnit } from 'app/entities/battle-unit/battle-unit.model';
 import { HealthOptimizerService } from './health-optimizer.service';
+import { TroopCalculation } from '../troop-calculator.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +14,9 @@ export class TroopCalculatorService {
     protected preferredUnitFactoryService: PreferredUnitFactoryService
   ) {}
 
-  getTroops(troops: Array<BattleUnit>, leadership: number): Array<BattleUnit> {
+  getTroopsCalculation(troops: Array<BattleUnit>, leadership: number): TroopCalculation {
     const preferredUnits = this.preferredUnitFactoryService.initializePreferredUnits(troops);
     this.healthOptimizerService.optimizeTroopsHealth(troops, preferredUnits, leadership);
-    return troops;
+    return new TroopCalculation(this.healthOptimizerService.sumLeadership(troops), troops);
   }
 }
