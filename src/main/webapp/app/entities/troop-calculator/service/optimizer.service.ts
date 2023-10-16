@@ -59,7 +59,20 @@ export class OptimizerService {
     return strength;
   }
 
+  sumHealth(troops: Array<BattleUnit>): number {
+    let health = 0;
+
+    troops.forEach(unit => {
+      health += this.getAllHealth(unit);
+    });
+    return health;
+  }
+
   getAllStrength(unit: BattleUnit): number {
     return unit.unit!.strength! * unit.number * ((unit.bStrength + 100.0) / 100.0);
+  }
+
+  getAllHealth(unit: BattleUnit): number {
+    return unit.unit!.health! * unit.number * ((unit.bHealth + 100.0) / 100.0);
   }
 }

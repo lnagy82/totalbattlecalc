@@ -15,7 +15,7 @@ export class HealthOptimizerService extends OptimizerService {
     do {
       this.incrementTroops(troops);
       troops.sort((o1, o2) => this.getAllHealth(o1) - this.getAllHealth(o2));
-    } while (maxLeaderShip >= this.sumLeadership(troops));
+    } while (maxLeaderShip > this.sumLeadership(troops));
 
     do {
       this.decrementTroops(troops, preferredUnits);

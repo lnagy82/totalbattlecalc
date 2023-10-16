@@ -1,3 +1,8 @@
 button {
- min-width: 100px;
+ min-width: 150px;
+}
+
+.vertical-scrollable {
+  overflow-y: scroll;
+  max-height: 80vh;
 }

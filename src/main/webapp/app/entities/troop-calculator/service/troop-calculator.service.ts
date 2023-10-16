@@ -17,6 +17,6 @@ export class TroopCalculatorService {
   getTroopsCalculation(troops: Array<BattleUnit>, leadership: number): TroopCalculation {
     const preferredUnits = this.preferredUnitFactoryService.initializePreferredUnits(troops);
     this.healthOptimizerService.optimizeTroopsHealth(troops, preferredUnits, leadership);
-    return new TroopCalculation(this.healthOptimizerService.sumLeadership(troops), troops);
+    return new TroopCalculation(this.healthOptimizerService.sumLeadership(troops), this.healthOptimizerService.sumStrength(troops),  this.healthOptimizerService.sumHealth(troops), troops);
   }
 }

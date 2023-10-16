@@ -5,6 +5,7 @@ import { UnitService } from '../unit/service/unit.service';
 import { HttpResponse } from '@angular/common/http';
 import { BattleUnit, IBattleUnit } from '../battle-unit/battle-unit.model';
 import { LocalStorageService } from 'ngx-webstorage';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'jhi-troop-calculator',
@@ -15,7 +16,9 @@ export class TroopCalculatorComponent implements OnInit {
   possibleUnits?: IUnit[];
   battleUnits?: IBattleUnit[] = [];
   isLoading = false;
-  leadership: number | undefined;
+  leadership: string | undefined;
+  strength: string | undefined;
+  health: string | undefined;
   maxLeadership = 28000;
   bHealth = 0;
   selectedUnit?: IUnit;
@@ -32,11 +35,12 @@ export class TroopCalculatorComponent implements OnInit {
         this.isLoading = false;
         this.battleUnits = this.localStorageService.retrieve('battleUnits') ?? [];
         this.possibleUnits = this.localStorageService.retrieve('possibleUnits');
-        this.leadership = this.sumLeadership(this.battleUnits!);
+        // this.leadership = this.sumLeadership(this.battleUnits!);
         if (this.possibleUnits == null || this.possibleUnits.length === 0) {
           this.possibleUnits = res.body ?? [];
           this.sortByName(this.possibleUnits);
         }
+        this.calculate();
       },
       () => {
         this.isLoading = false;
@@ -48,7 +52,11 @@ export class TroopCalculatorComponent implements OnInit {
     return item.id!;
   }
 
-  gotoBattle(): void {
+  gotoBattle(unit: Unit): void {
+    if(!this.selectedUnit)
+      {this.selectedUnit = unit;}
+
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (this.selectedUnit) {
       this.battleUnits!.push(new BattleUnit(1, 0, 564.0, this.bHealth, this.selectedUnit));
       const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
@@ -76,7 +84,9 @@ export class TroopCalculatorComponent implements OnInit {
     });
     const troopCalculation = this.troopCalculatorService.getTroopsCalculation(this.battleUnits!, this.maxLeadership);
     this.battleUnits = troopCalculation.battleUnits;
-    this.leadership = troopCalculation.leadership;
+    this.leadership = formatNumber(troopCalculation.leadership!, 'en', '1.0-0');
+    this.strength = formatNumber(troopCalculation.strength!, 'en', '1.0-0');
+    this.health = formatNumber(troopCalculation.health!, 'en', '1.0-0');
     this.saveUnits();
   }
 
