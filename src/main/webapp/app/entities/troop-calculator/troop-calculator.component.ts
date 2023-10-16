@@ -1,6 +1,6 @@
 import { TroopCalculatorService } from './service/troop-calculator.service';
 import { Component, OnInit } from '@angular/core';
-import { IUnit } from '../unit/unit.model';
+import { IUnit, Unit } from '../unit/unit.model';
 import { UnitService } from '../unit/service/unit.service';
 import { HttpResponse } from '@angular/common/http';
 import { BattleUnit, IBattleUnit } from '../battle-unit/battle-unit.model';
@@ -32,7 +32,7 @@ export class TroopCalculatorComponent implements OnInit {
         this.isLoading = false;
         this.battleUnits = this.localStorageService.retrieve('battleUnits') ?? [];
         this.possibleUnits = this.localStorageService.retrieve('possibleUnits');
-
+        this.leadership = this.sumLeadership(this.battleUnits!);
         if (this.possibleUnits == null || this.possibleUnits.length === 0) {
           this.possibleUnits = res.body ?? [];
           this.sortByName(this.possibleUnits);
@@ -84,19 +84,31 @@ export class TroopCalculatorComponent implements OnInit {
     return (unit.unit!.health! * unit.number * (unit.bHealth + 100.0)) / 100.0;
   }
 
+  getUnitAvatarUrl(unit: Unit): string {
+    return '../../../content/images/units/' + unit.imageUrl!;
+  }
+
+  sumLeadership(troops: Array<BattleUnit>): number {
+    let leadership = 0;
+
+    troops.forEach(unit => {
+      leadership += unit.unit!.leadership! * unit.number;
+    });
+
+    return leadership;
+  }
+
   private saveUnits(): void {
     this.localStorageService.store('possibleUnits', this.possibleUnits);
     this.localStorageService.store('battleUnits', this.battleUnits);
   }
   private sortByName(units?: IUnit[]): void {
     units!.sort(function (a, b) {
-      if (a.name! < b.name!) {
-        return -1;
-      }
-      if (a.name! > b.name!) {
-        return 1;
-      }
-      return 0;
+
+      const cTier = a.tier! === b.tier! ? 0 : (a.tier! < b.tier! ? -1 : 1);
+      const cName = a.name!.localeCompare(b.name!);
+
+      return cTier || cName;
     });
   }
 }

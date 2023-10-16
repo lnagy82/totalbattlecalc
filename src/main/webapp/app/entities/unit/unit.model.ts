@@ -3,6 +3,7 @@ import { IFeature } from 'app/entities/feature/feature.model';
 export interface IUnit {
   id?: number;
   name?: string | null;
+  tier?: number;
   strength?: number | null;
   health?: number | null;
   leadership?: number | null;
@@ -14,12 +15,14 @@ export interface IUnit {
   revivalCostAfterAnAttackGold?: number | null;
   revivalCostAfterDefendingSilver?: number | null;
   features?: IFeature[] | null;
+  imageUrl?: string;
 }
 
 export class Unit implements IUnit {
   constructor(
     public id?: number,
     public name?: string | null,
+    public tier?: number,
     public strength?: number | null,
     public health?: number | null,
     public leadership?: number | null,
@@ -30,7 +33,8 @@ export class Unit implements IUnit {
     public carryingCapacity?: number | null,
     public revivalCostAfterAnAttackGold?: number | null,
     public revivalCostAfterDefendingSilver?: number | null,
-    public features?: IFeature[] | null
+    public features?: IFeature[] | null,
+    public imageUrl?: string
   ) {}
 }
 

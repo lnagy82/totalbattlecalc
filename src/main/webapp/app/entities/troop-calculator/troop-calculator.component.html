@@ -19,23 +19,23 @@
 </div>
 <div class="form-group">
   <label jhiTranslate="totalbattlecalcApp.unit.home.title" for="field_features">Unit</label>
-  <select class="form-control" id="field_features" [(ngModel)]="selectedUnit">
+  <select class="form-control" id="field_features" [(ngModel)]="selectedUnit" (click)="gotoBattle()">
     <option [ngValue]="unit" *ngFor="let unit of possibleUnits; trackBy: trackId">
       {{ unit.name }}
     </option>
   </select>
 </div>
-<div class="btn-group">
-  <div class="form-group">
-    <button class="btn btn-primary" type="button" (click)="gotoBattle()">Add with health bonus</button>
-  </div>
-  <div class="form-group">
-    <input type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="bHealth" />
-  </div>
-</div>
 <div class="form-group">
   <label class="form-control-label" jhiTranslate="totalbattlecalcApp.unit.leadership" for="field_leadership">Maximum Leadership</label>
-  <input type="text" class="form-control" name="leadership" id="field_leadership" data-cy="leadership" [(ngModel)]="this.leadership" disabled/>
+  <input
+    type="text"
+    class="form-control"
+    name="leadership"
+    id="field_leadership"
+    data-cy="leadership"
+    [(ngModel)]="this.leadership"
+    disabled
+  />
 </div>
 <div class="table-responsive" id="entities" *ngIf="battleUnits && battleUnits!.length > 0">
   <table class="table table-striped" aria-describedby="page-heading">
@@ -43,7 +43,7 @@
       <tr>
         <th></th>
         <th>
-          <span jhiTranslate="totalbattlecalcApp.unit.name">Name</span>
+          <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth">Bonus Health</span>
         </th>
         <th>
           <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
@@ -59,8 +59,16 @@
     </thead>
     <tbody>
       <tr *ngFor="let battleUnit of battleUnits!; trackBy: trackId" data-cy="entityTable">
-        <th><fa-icon icon="users"></fa-icon></th>
-        <td>{{ battleUnit.unit!.name }}</td>
+        <th>
+          <img [src]="this.getUnitAvatarUrl(battleUnit.unit!)" class="profile-image rounded-circle" alt="Avatar" />
+          <br />
+          {{ battleUnit.unit!.name }}
+        </th>
+        <td>
+          <div class="form-group">
+            <input type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="battleUnit.bHealth" />
+          </div>
+        </td>
         <td>{{ battleUnit.number }}</td>
         <!-- <td>{{ battleUnit.bHealth }}</td> -->
         <td>{{ getAllHealth(battleUnit) | number: '1.0-0' }}</td>

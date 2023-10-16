@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Archer I",
+      "tier": 1,
       "strength": 50,
       "health": 150,
       "leadership": 1,
@@ -11,11 +12,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_archer_unlock_1_72.png"
     },
     {
       "id": 2,
       "name": "Spearman I",
+      "tier": 1,
       "strength": 50,
       "health": 150,
       "leadership": 1,
@@ -24,11 +27,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_lancer_unlock_1_72.png"
     },
     {
       "id": 3,
       "name": "Rider I",
+      "tier": 1,
       "strength": 100,
       "health": 300,
       "leadership": 2,
@@ -37,11 +42,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_horseman_unlock_1_72.png"
     },
     {
       "id": 4,
       "name": "Archer II",
+      "tier": 2,
       "strength": 90,
       "health": 270,
       "leadership": 1,
@@ -50,11 +57,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_archer_unlock_2_72.png"
     },
     {
       "id": 5,
       "name": "Spearman II",
+      "tier": 2,
       "strength": 90,
       "health": 270,
       "leadership": 1,
@@ -63,11 +72,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_lancer_unlock_2_72.png"
     },
     {
       "id": 6,
       "name": "Rider II",
+      "tier": 2,
       "strength": 180,
       "health": 540,
       "leadership": 2,
@@ -76,11 +87,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_horseman_unlock_2_72.png"
     },
     {
       "id": 7,
       "name": "Archer III",
+      "tier": 3,
       "strength": 160,
       "health": 480,
       "leadership": 1,
@@ -89,11 +102,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_archer_unlock_3_72.png"
     },
     {
       "id": 8,
       "name": "Spearman III",
+      "tier": 3,
       "strength": 160,
       "health": 480,
       "leadership": 1,
@@ -102,11 +117,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_lancer_unlock_3_72.png"
     },
     {
       "id": 9,
       "name": "Rider III",
+      "tier": 3,
       "strength": 320,
       "health": 960,
       "leadership": 2,
@@ -115,11 +132,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_horseman_unlock_3_72.png"
     },
     {
       "id": 10,
       "name": "Archer IV",
+      "tier": 4,
       "strength": 290,
       "health": 870,
       "leadership": 1,
@@ -128,11 +147,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_archer_unlock_4_72.png"
     },
     {
       "id": 11,
       "name": "Spearman IV",
+      "tier": 4,
       "strength": 290,
       "health": 870,
       "leadership": 1,
@@ -141,11 +162,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_lancer_unlock_4_72.png"
     },
     {
       "id": 12,
       "name": "Rider IV",
+      "tier": 4,
       "strength": 580,
       "health": 1740,
       "leadership": 2,
@@ -154,11 +177,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_horseman_unlock_4_72.png"
     },
     {
       "id": 13,
       "name": "Archer V",
+      "tier": 5,
       "strength": 520,
       "health": 1560,
       "leadership": 1,
@@ -167,11 +192,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_archer_unlock_5_72.png"
     },
     {
       "id": 14,
       "name": "Spearman V",
+      "tier": 5,
       "strength": 520,
       "health": 1560,
       "leadership": 1,
@@ -180,11 +207,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_lancer_unlock_5_72.png"
     },
     {
       "id": 15,
       "name": "Rider V",
+      "tier": 5,
       "strength": 1050,
       "health": 3150,
       "leadership": 2,
@@ -193,11 +222,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_horseman_unlock_5_72.png"
     },
     {
       "id": 16,
       "name": "Heavy arbalester VI",
+      "tier": 6,
       "strength": 940,
       "health": 2820,
       "leadership": 1,
@@ -206,11 +237,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_arbalester_shield_unlock_6_72.png"
     },
     {
       "id": 17,
       "name": "Heavy halberdier VI",
+      "tier": 6,
       "strength": 940,
       "health": 2820,
       "leadership": 1,
@@ -219,11 +252,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_halberd_knight_unlock_6_72.png"
     },
     {
       "id": 18,
       "name": "Mounted knight VI",
+      "tier": 6,
       "strength": 1900,
       "health": 5700,
       "leadership": 2,
@@ -232,11 +267,13 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_tournament_knight_unlock_6_72.png"
     },
     {
       "id": 19,
       "name": "Heavy arbalester VII",
+      "tier": 7,
       "strength": 1700,
       "health": 5100,
       "leadership": 1,
@@ -245,11 +282,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 100,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_arbalester_shield_unlock_7_72.png"
     },
     {
       "id": 20,
       "name": "Heavy halberdier VII",
+      "tier": 7,
       "strength": 1700,
       "health": 5100,
       "leadership": 1,
@@ -258,11 +297,13 @@
       "foodConsumption": 5,
       "carryingCapacity": 250,
       "revivalCostAfterAnAttackGold": 4,
-      "revivalCostAfterDefendingSilver": 40
+      "revivalCostAfterDefendingSilver": 40,
+      "imageUrl": "tech_halberd_knight_unlock_7_72.png"
     },
     {
       "id": 21,
       "name": "Mounted knight VII",
+      "tier": 7,
       "strength": 3400,
       "health": 10200,
       "leadership": 2,
@@ -271,7 +312,53 @@
       "foodConsumption": 10,
       "carryingCapacity": 200,
       "revivalCostAfterAnAttackGold": 8,
-      "revivalCostAfterDefendingSilver": 80
+      "revivalCostAfterDefendingSilver": 80,
+      "imageUrl": "tech_tournament_knight_unlock_7_72.png"
+    },
+    {
+      "id": 22,
+      "name": "Battle Griffin V",
+      "tier": 5,
+      "strength": 10000,
+      "health": 30000,
+      "leadership": 20,
+      "speed": 60,
+      "initiative": 10,
+      "foodConsumption": 100,
+      "carryingCapacity": 1000,
+      "revivalCostAfterAnAttackGold": 80,
+      "revivalCostAfterDefendingSilver": 800,
+      "imageUrl": "tech_gryphon_unlock_5_72.png"
+    },
+    {
+      "id": 22,
+      "name": "Battle Griffin VI",
+      "tier": 6,
+      "strength": 19000,
+      "health": 57000,
+      "leadership": 20,
+      "speed": 54,
+      "initiative": 10,
+      "foodConsumption": 100,
+      "carryingCapacity": 1000,
+      "revivalCostAfterAnAttackGold": 80,
+      "revivalCostAfterDefendingSilver": 800,
+      "imageUrl": "tech_gryphon_unlock_6_72.png"
+    },
+    {
+      "id": 22,
+      "name": "Battle Griffin VII",
+      "tier": 7,
+      "strength": 34000,
+      "health": 102000,
+      "leadership": 20,
+      "speed": 49,
+      "initiative": 10,
+      "foodConsumption": 100,
+      "carryingCapacity": 1000,
+      "revivalCostAfterAnAttackGold": 80,
+      "revivalCostAfterDefendingSilver": 800,
+      "imageUrl": "tech_gryphon_unlock_7_72.png"
     }
   ]
 }
