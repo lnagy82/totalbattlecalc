@@ -53,8 +53,9 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   gotoBattle(unit: Unit): void {
-    if(!this.selectedUnit)
-      {this.selectedUnit = unit;}
+    if (!this.selectedUnit) {
+      this.selectedUnit = unit;
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (this.selectedUnit) {
@@ -95,7 +96,7 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   getUnitAvatarUrl(unit: Unit): string {
-    return '../../../content/images/units/' + unit.imageUrl!;
+    return 'content/images/units/' + unit.imageUrl!;
   }
 
   sumLeadership(troops: Array<BattleUnit>): number {
@@ -114,8 +115,7 @@ export class TroopCalculatorComponent implements OnInit {
   }
   private sortByName(units?: IUnit[]): void {
     units!.sort(function (a, b) {
-
-      const cTier = a.tier! === b.tier! ? 0 : (a.tier! < b.tier! ? -1 : 1);
+      const cTier = a.tier! === b.tier! ? 0 : a.tier! < b.tier! ? -1 : 1;
       const cName = a.name!.localeCompare(b.name!);
 
       return cTier || cName;
