@@ -30,7 +30,7 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./battle/battle.module').then(m => m.BattleModule),
       },
       {
-        path: 'troop-calculator',
+        path: '',
         data: { pageTitle: 'totalbattlecalcApp.troopCalculator.home.title' },
         loadChildren: () => import('./troop-calculator/troop-calculator.module').then(m => m.TroopCalculatorModule),
       },
