@@ -20,7 +20,7 @@ export class TroopCalculatorComponent implements OnInit {
   strength: string | undefined;
   health: string | undefined;
   maxLeadership = 28000;
-  bHealth = 0;
+  bHealth = true;
   selectedUnit?: IUnit;
 
   constructor(
@@ -34,12 +34,11 @@ export class TroopCalculatorComponent implements OnInit {
       (res: HttpResponse<IUnit[]>) => {
         this.isLoading = false;
         this.battleUnits = this.localStorageService.retrieve('battleUnits') ?? [];
-        this.possibleUnits = this.localStorageService.retrieve('possibleUnits');
-        // this.leadership = this.sumLeadership(this.battleUnits!);
-        if (this.possibleUnits == null || this.possibleUnits.length === 0) {
-          this.possibleUnits = res.body ?? [];
-          this.sortByName(this.possibleUnits);
-        }
+        this.possibleUnits = res.body ?? [];
+        this.resetCorrupted();
+        this.checkCorrupted();
+        this.filterPossibleUnits();
+        this.sortByName(this.possibleUnits);
         this.calculate();
       },
       () => {
@@ -57,17 +56,11 @@ export class TroopCalculatorComponent implements OnInit {
       this.selectedUnit = unit;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (this.selectedUnit) {
-      this.battleUnits!.push(new BattleUnit(1, 0, 564.0, this.bHealth, this.selectedUnit));
-      const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
-      this.possibleUnits!.splice(index, 1);
-      this.selectedUnit = undefined;
-
-      this.saveUnits();
-    }
-    // eslint-disable-next-line no-console
-    console.log(this.selectedUnit);
+    this.battleUnits!.push(new BattleUnit(1, false, 0, 564.0, 0, this.selectedUnit));
+    const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
+    this.possibleUnits!.splice(index, 1);
+    this.selectedUnit = undefined;
+    this.saveUnits();
   }
 
   gotoHome(battleUnit: any): void {
@@ -110,7 +103,6 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   private saveUnits(): void {
-    this.localStorageService.store('possibleUnits', this.possibleUnits);
     this.localStorageService.store('battleUnits', this.battleUnits);
   }
   private sortByName(units?: IUnit[]): void {
@@ -120,5 +112,31 @@ export class TroopCalculatorComponent implements OnInit {
 
       return cTier || cName;
     });
+  }
+
+  private checkCorrupted(): void {
+    this.battleUnits?.forEach(bu => {
+      this.possibleUnits?.forEach(pu => {
+        if (bu.unit!.id === pu.id!) {
+          if (JSON.stringify(bu.unit!) === JSON.stringify(pu)) {
+            //its ok
+          } else {
+            bu.corrupted = true;
+          }
+        }
+      });
+    });
+  }
+
+  private resetCorrupted(): void {
+    this.battleUnits!.forEach(unit => {
+      unit.corrupted = false;
+    });
+  }
+
+  private filterPossibleUnits(): void {
+    this.possibleUnits = this.possibleUnits!.filter(
+      unit => !this.battleUnits!.map(battleUnit => battleUnit.unit!.id!).includes(unit.id!)
+    );
   }
 }

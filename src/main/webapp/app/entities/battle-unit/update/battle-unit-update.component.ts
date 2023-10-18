@@ -131,7 +131,7 @@ export class BattleUnitUpdateComponent implements OnInit {
 
   protected createFromForm(): IBattleUnit {
     const battleUnit = new BattleUnit(
-      this.editForm.get(['id'])!.value,
+      this.editForm.get(['id'])!.value, false,
       this.editForm.get(['number'])!.value,
       this.editForm.get(['unit'])!.value,
       this.editForm.get(['bonuses'])!.value

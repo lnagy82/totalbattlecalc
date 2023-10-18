@@ -3,6 +3,7 @@ import { IBonus } from 'app/entities/bonus/bonus.model';
 
 export interface IBattleUnit {
   id: number;
+  corrupted: boolean;
   number: number;
   bStrength: number;
   bHealth: number;
@@ -13,7 +14,7 @@ export interface IBattleUnit {
 }
 
 export class BattleUnit implements IBattleUnit {
-  constructor(public id: number, public number: number, public bStrength: number, public bHealth: number, public unit?: IUnit | null, public bonuses?: IBonus[] | null) {}
+  constructor(public id: number, public corrupted: boolean, public number: number, public bStrength: number, public bHealth: number, public unit?: IUnit | null, public bonuses?: IBonus[] | null) {}
 
   getAllCost(): number {
     return this.unit!.cost! * this.number;

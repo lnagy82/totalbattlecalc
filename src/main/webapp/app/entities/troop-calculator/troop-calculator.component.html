@@ -61,13 +61,13 @@
     <div class="col form-group">
       <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Strength</span>
-        <input type="text" class="form-control"  [(ngModel)]="this.strength" title="Without bonuses" disabled/>
+        <input type="text" class="form-control" [(ngModel)]="this.strength" title="Without bonuses" disabled />
       </div>
     </div>
     <div class="col form-group">
       <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Health</span>
-        <input type="text" class="form-control"  [(ngModel)]="this.health" title="With bonuses" disabled/>
+        <input type="text" class="form-control" [(ngModel)]="this.health" title="With bonuses" disabled />
       </div>
     </div>
   </div>
@@ -79,10 +79,10 @@
             <tr>
               <th></th>
               <th>
-                <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth">Bonus Health</span>
+                <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
               </th>
               <th>
-                <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
+                <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth" (click)="this.bHealth = !this.bHealth">Bonus Health</span>
               </th>
               <th>
                 <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
@@ -96,13 +96,14 @@
                 <img [src]="this.getUnitAvatarUrl(battleUnit.unit!)" class="profile-image rounded-circle" alt="Avatar" />
                 <br />
                 {{ battleUnit.unit!.name }}
+                <fa-icon *ngIf="battleUnit.corrupted" icon="asterisk" style="color: red"></fa-icon>
               </th>
+              <td style="font-weight: bold;">{{ battleUnit.number }}</td>
               <td>
                 <div class="form-group">
-                  <input type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="battleUnit.bHealth" />
+                  <input *ngIf="this.bHealth" type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="battleUnit.bHealth" style="width: 100px;"/>
                 </div>
               </td>
-              <td>{{ battleUnit.number }}</td>
               <td>{{ getAllHealth(battleUnit) | number: '1.0-0' }}</td>
               <td class="text-right">
                 <div class="btn-group">
