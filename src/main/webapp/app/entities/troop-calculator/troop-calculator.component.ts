@@ -1,9 +1,10 @@
+import { TroopCalculation } from './troop-calculator.model';
 import { TroopCalculatorService } from './service/troop-calculator.service';
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Unit } from '../unit/unit.model';
 import { UnitService } from '../unit/service/unit.service';
 import { HttpResponse } from '@angular/common/http';
-import { BattleUnit, IBattleUnit } from '../battle-unit/battle-unit.model';
+import { BattleUnit } from '../battle-unit/battle-unit.model';
 import { LocalStorageService } from 'ngx-webstorage';
 import { formatNumber } from '@angular/common';
 
@@ -14,14 +15,15 @@ import { formatNumber } from '@angular/common';
 })
 export class TroopCalculatorComponent implements OnInit {
   possibleUnits?: IUnit[];
-  battleUnits?: IBattleUnit[] = [];
   isLoading = false;
   leadership: string | undefined;
   strength: string | undefined;
   health: string | undefined;
-  maxLeadership = 28000;
-  bHealth = true;
+  showBHealth = true;
+  showImage = true;
   selectedUnit?: IUnit;
+
+  troopCalculation?: TroopCalculation;
 
   constructor(
     protected unitService: UnitService,
@@ -33,7 +35,7 @@ export class TroopCalculatorComponent implements OnInit {
     this.unitService.query().subscribe(
       (res: HttpResponse<IUnit[]>) => {
         this.isLoading = false;
-        this.battleUnits = this.localStorageService.retrieve('battleUnits') ?? [];
+        this.troopCalculation = this.localStorageService.retrieve('troopCalculation') ?? new TroopCalculation(22800, 0, 0, []);
         this.possibleUnits = res.body ?? [];
         this.resetCorrupted();
         this.checkCorrupted();
@@ -56,7 +58,7 @@ export class TroopCalculatorComponent implements OnInit {
       this.selectedUnit = unit;
     }
 
-    this.battleUnits!.push(new BattleUnit(1, false, 0, 564.0, 0, this.selectedUnit));
+    this.troopCalculation!.battleUnits!.push(new BattleUnit(1, false, 0, 564.0, 0, this.selectedUnit));
     const index: number = this.possibleUnits!.indexOf(this.selectedUnit);
     this.possibleUnits!.splice(index, 1);
     this.selectedUnit = undefined;
@@ -64,8 +66,8 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   gotoHome(battleUnit: any): void {
-    const index: number = this.battleUnits!.indexOf(battleUnit);
-    this.battleUnits!.splice(index, 1);
+    const index: number = this.troopCalculation!.battleUnits!.indexOf(battleUnit);
+    this.troopCalculation!.battleUnits!.splice(index, 1);
     this.possibleUnits!.push(battleUnit.unit);
     this.sortByName(this.possibleUnits);
 
@@ -73,14 +75,14 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   calculate(): void {
-    this.battleUnits!.forEach(unit => {
+    this.troopCalculation!.battleUnits!.forEach(unit => {
       unit.number = 0;
     });
-    const troopCalculation = this.troopCalculatorService.getTroopsCalculation(this.battleUnits!, this.maxLeadership);
-    this.battleUnits = troopCalculation.battleUnits;
-    this.leadership = formatNumber(troopCalculation.leadership!, 'en', '1.0-0');
-    this.strength = formatNumber(troopCalculation.strength!, 'en', '1.0-0');
-    this.health = formatNumber(troopCalculation.health!, 'en', '1.0-0');
+    this.troopCalculation = this.troopCalculatorService.getTroopsCalculation(this.troopCalculation!.battleUnits!, this.troopCalculation!.leadership!);
+    // this.battleUnits = troopCalculation.battleUnits;
+    this.leadership = formatNumber(this.troopCalculation.leadership!, 'en', '1.0-0');
+    this.strength = formatNumber(this.troopCalculation.strength!, 'en', '1.0-0');
+    this.health = formatNumber(this.troopCalculation.health!, 'en', '1.0-0');
     this.saveUnits();
   }
 
@@ -90,6 +92,10 @@ export class TroopCalculatorComponent implements OnInit {
 
   getUnitAvatarUrl(unit: Unit): string {
     return 'content/images/units/' + unit.imageUrl!;
+  }
+
+  getUnitAvatarBackUrl(unit: Unit): string {
+    return 'content/images/units/back_icon_units_72x72_green.png';
   }
 
   sumLeadership(troops: Array<BattleUnit>): number {
@@ -103,11 +109,11 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   private saveUnits(): void {
-    this.localStorageService.store('battleUnits', this.battleUnits);
+    this.localStorageService.store('troopCalculation', this.troopCalculation);
   }
   private sortByName(units?: IUnit[]): void {
     units!.sort(function (a, b) {
-      const cTier = a.tier! === b.tier! ? 0 : a.tier! < b.tier! ? -1 : 1;
+      const cTier = a.tier! === b.tier! ? 0 : a.tier! > b.tier! ? -1 : 1;
       const cName = a.name!.localeCompare(b.name!);
 
       return cTier || cName;
@@ -115,7 +121,7 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   private checkCorrupted(): void {
-    this.battleUnits?.forEach(bu => {
+    this.troopCalculation!.battleUnits?.forEach(bu => {
       this.possibleUnits?.forEach(pu => {
         if (bu.unit!.id === pu.id!) {
           if (JSON.stringify(bu.unit!) === JSON.stringify(pu)) {
@@ -129,14 +135,14 @@ export class TroopCalculatorComponent implements OnInit {
   }
 
   private resetCorrupted(): void {
-    this.battleUnits!.forEach(unit => {
+    this.troopCalculation!.battleUnits!.forEach(unit => {
       unit.corrupted = false;
     });
   }
 
   private filterPossibleUnits(): void {
     this.possibleUnits = this.possibleUnits!.filter(
-      unit => !this.battleUnits!.map(battleUnit => battleUnit.unit!.id!).includes(unit.id!)
+      unit => !this.troopCalculation!.battleUnits!.map(battleUnit => battleUnit.unit!.id!).includes(unit.id!)
     );
   }
 }

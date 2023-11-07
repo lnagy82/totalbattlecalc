@@ -24,7 +24,7 @@
             name="leadership"
             id="field_leadership"
             data-cy="leadership"
-            [(ngModel)]="maxLeadership"
+            [(ngModel)]="troopCalculation!.leadership"
           />
         </div>
       </div>
@@ -43,7 +43,10 @@
         </button>
         <div class="dropdown-menu vertical-scrollable">
           <a class="dropdown-item" *ngFor="let unit of possibleUnits; trackBy: trackId" (click)="gotoBattle(unit)">
-            <img [src]="this.getUnitAvatarUrl(unit!)" class="profile-image rounded-circle" alt="Avatar" />
+            <div class="image-container">
+              <img [src]="this.getUnitAvatarBackUrl(unit!)" class="profile-image rounded-circle background-image" alt="Avatar" />
+              <img [src]="this.getUnitAvatarUrl(unit!)" class="profile-image rounded-circle foreground-image" alt="Avatar" />
+            </div>
             {{ unit.name }}
           </a>
         </div>
@@ -73,16 +76,16 @@
   </div>
   <div class="row">
     <div class="col">
-      <div class="table-responsive" id="entities" *ngIf="battleUnits && battleUnits!.length > 0">
+      <div class="table-responsive" id="entities" *ngIf="troopCalculation!.battleUnits && troopCalculation!.battleUnits!.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
           <thead>
             <tr>
-              <th></th>
+              <th><fa-icon icon="image" (click)="this.showImage = !this.showImage"></fa-icon></th>
               <th>
                 <span jhiTranslate="totalbattlecalcApp.battleUnit.number">Number</span>
               </th>
               <th>
-                <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth" (click)="this.bHealth = !this.bHealth">Bonus Health</span>
+                <span jhiTranslate="totalbattlecalcApp.battleUnit.bHealth" (click)="this.showBHealth = !this.showBHealth">Bonus Health</span>
               </th>
               <th>
                 <span jhiTranslate="totalbattlecalcApp.unit.health">Health</span>
@@ -91,17 +94,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let battleUnit of battleUnits!; trackBy: trackId" data-cy="entityTable">
+            <tr *ngFor="let battleUnit of troopCalculation!.battleUnits!; trackBy: trackId" data-cy="entityTable">
               <th>
-                <img [src]="this.getUnitAvatarUrl(battleUnit.unit!)" class="profile-image rounded-circle" alt="Avatar" />
-                <br />
+                <img *ngIf="this.showImage" [src]="this.getUnitAvatarUrl(battleUnit.unit!)" class="profile-image rounded-circle" alt="Avatar" />
+                <br *ngIf="this.showImage"/>
                 {{ battleUnit.unit!.name }}
                 <fa-icon *ngIf="battleUnit.corrupted" icon="asterisk" style="color: red"></fa-icon>
               </th>
               <td style="font-weight: bold;">{{ battleUnit.number }}</td>
               <td>
                 <div class="form-group">
-                  <input *ngIf="this.bHealth" type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="battleUnit.bHealth" style="width: 100px;"/>
+                  <input *ngIf="this.showBHealth" type="number" class="form-control" name="bHealth" id="field_bHealth" [(ngModel)]="battleUnit.bHealth" style="width: 100px;"/>
                 </div>
               </td>
               <td>{{ getAllHealth(battleUnit) | number: '1.0-0' }}</td>
@@ -109,7 +112,7 @@
                 <div class="btn-group">
                   <button class="btn btn-danger btn-sm" data-cy="entityDetailsButton" (click)="gotoHome(battleUnit)">
                     <fa-icon icon="trash-alt"></fa-icon>
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.remove">Remove</span>
+                    <!-- <span class="d-none d-md-inline"></span> -->
                   </button>
                 </div>
               </td>
